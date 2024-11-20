@@ -82,7 +82,8 @@ public class QuestionVO implements Serializable {
         BeanUtils.copyProperties(question, questionVO);
         String content = question.getQuestionContent();
         if (content != null) {
-            JSONUtil.toList(content, QuestionContentDto.class);
+            List<QuestionContentDto> questionContentDos = JSONUtil.toList(content, QuestionContentDto.class);
+            questionVO.setQuestionContent(questionContentDos);
         }
         return questionVO;
     }

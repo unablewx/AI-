@@ -12,7 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * 角色测评类
+ * 自定义测评打分类
  */
 @ScoringStrategyConfig(appType = 0,scoringStrategy = 0)
 public class CustomScoreScoringStrategyImpl implements ScoringStrategy {

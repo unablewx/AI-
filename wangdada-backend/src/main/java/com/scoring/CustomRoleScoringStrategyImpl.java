@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 打分测评类
+ * 自定义测评角色类
  */
 @ScoringStrategyConfig(appType = 1,scoringStrategy = 0)
 public class CustomRoleScoringStrategyImpl implements ScoringStrategy {

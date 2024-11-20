@@ -11,6 +11,8 @@ import com.model.entity.ScoringResult;
 import com.model.entity.UserAnswer;
 import com.service.QuestionService;
 import com.service.ScoringResultService;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -60,14 +62,17 @@ public class ScoringStrategyUtils {
      */
     public UserAnswer packagingUserAnswer(App app, ScoringResult scoringResult,List<String> choices) {
         UserAnswer userAnswer = new UserAnswer();
-        userAnswer.setAppId(app.getId());
         userAnswer.setAppType(app.getAppType());
         userAnswer.setScoringStrategy(app.getScoringStrategy());
         userAnswer.setChoices(JSONUtil.toJsonStr(choices));
-        userAnswer.setResultId(scoringResult.getId());
+        if (ObjectUtils.isNotEmpty(scoringResult.getId())){
+            userAnswer.setResultId(scoringResult.getId());
+        }
         userAnswer.setResultName(scoringResult.getResultName());
         userAnswer.setResultDesc(scoringResult.getResultDesc());
-        userAnswer.setResultPicture(scoringResult.getResultPicture());
+        if (StringUtils.isNotEmpty(scoringResult.getResultPicture())){
+            userAnswer.setResultPicture(scoringResult.getResultPicture());
+        }
         return userAnswer;
     }
 }
